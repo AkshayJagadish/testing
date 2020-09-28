@@ -25,7 +25,21 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
+        
+            - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.0
+        with:
+          timeZone: -4
+          format: 'YYYY-MM-DD-HH-mm-ss'
+          
+      - name: Usage
+        env:
+          TIME: "${{ steps.time.outputs.time }}"
+        run: |
+          echo $TIME
+          
+          
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
