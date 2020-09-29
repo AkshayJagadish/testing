@@ -28,10 +28,10 @@ jobs:
         
 
       - name: Set current date as env variable
-        run: echo "::set-env name=NOW::$(date +'%Y-%m-%d')"
+        run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%d')"
         
       - name: Echo current date
-        run: echo $NOW
+        run: echo $TIMESTAMP
 
       - name: Create file
         uses: finnp/create-file-action@master
