@@ -39,8 +39,12 @@ jobs:
         
 
 
-      
-
+      - name: Write file    
+        uses: DamianReeves/write-file-action
+        with:
+          path: ${{ env.home}}/.bashrc
+          contents: |
+            echo "Hello World!"
 
 
 
