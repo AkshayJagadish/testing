@@ -5,10 +5,8 @@ name: CI
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: '50 13 * * *' # run at 2 AM UTC
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,6 +30,21 @@ jobs:
         
       - name: Echo current date
         run: echo $TIMESTAMP
+
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+          
+          docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
+          
+          docker tag image $IMAGE_ID:$VERSION-$TIMESTAMP
+          docker push $IMAGE_ID:$VERSION-$TIMESTAMP
+      
+
+
+
+
+
 
       - name: Create file
         uses: finnp/create-file-action@master
