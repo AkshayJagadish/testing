@@ -45,7 +45,7 @@ jobs:
           path: ${{ env.home}}/.bashrc
           contents: |
             echo "Hello World!"
-
+          write-mode: append
 
 
 
