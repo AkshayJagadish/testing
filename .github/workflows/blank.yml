@@ -4,9 +4,9 @@ name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  schedule:
-    - cron: '*/1 * * * *' # run at 2 AM UTC
+on: 
+  push:
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,7 +26,7 @@ jobs:
         
 
       - name: Set current date as env variable
-        run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%d')"
+        run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%dT%H:%M:%S')"
         
       - name: Echo current date
         run: echo $TIMESTAMP
