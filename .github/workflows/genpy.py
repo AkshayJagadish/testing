@@ -1,6 +1,4 @@
-f= open("./.github/workflows/myfile2.txt","w+")
-
-for i in range(10):
-     f.write("This is line %d\r\n" % (i+1))
-
-f.close() 
+filepath = './.github/workflows/myfile2.txt'
+with open(filepath, 'w') as fp:
+    line = fp.readline()
+    print(line)
