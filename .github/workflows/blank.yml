@@ -28,15 +28,15 @@ jobs:
         run: echo Hello, world!
         
 
-    - name: Commit files
-      run: |
-        git config --local user.email "akshaysajnani1996@gmail.com"
-        git config --local user.name "AkshayJagadish"
-        git commit -m "Add changes" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit files
+        run: |
+          git config --local user.email "akshaysajnani1996@gmail.com"
+          git config --local user.name "AkshayJagadish"
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         
         
       - name: Get Time
