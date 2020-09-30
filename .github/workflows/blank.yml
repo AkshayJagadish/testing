@@ -52,9 +52,9 @@ jobs:
         
 
       - run: |
-          $TIME > commit.txt
-          $GITHUB_SHA > commit.txt
-          $GITHUB_SHA > commit.txt
+          echo $TIME >> commit.txt
+          echo $GITHUB_SHA >> commit.txt
+          echo $GITHUB_SHA >> commit.txt
           
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
