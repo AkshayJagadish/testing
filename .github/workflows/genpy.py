@@ -1,4 +1,4 @@
 filepath = './.github/workflows/myfile2.txt'
-with open(filepath, 'w') as fp:
+with open(filepath, 'a+') as fp:
     line = fp.readline()
     print(line)
