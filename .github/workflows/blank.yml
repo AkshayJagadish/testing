@@ -49,9 +49,9 @@ jobs:
         
 
       - run: |
-          echo ${{ steps.time.outputs.time }} > commit.txt
-          echo ${ $GITHUB_SHA } >> commit.txt
-          echo ${ $GITHUB_REF }>> commit.txt
+          echo @@${{ steps.time.outputs.time }}@@ > commit.txt
+          echo @@$GITHUB_SHA@@ >> commit.txt
+          echo @@$GITHUB_REF@@>> commit.txt
           
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
