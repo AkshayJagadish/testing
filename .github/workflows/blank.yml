@@ -49,7 +49,7 @@ jobs:
         
 
       - run: |
-          echo date >> commit.txt
+          echo date > commit.txt
           echo $GITHUB_SHA >> commit.txt
           echo $GITHUB_REF >> commit.txt
           
