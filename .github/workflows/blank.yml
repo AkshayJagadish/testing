@@ -43,18 +43,6 @@ jobs:
 
 
 
-
-      - name: Write file    
-        uses: DamianReeves/write-file-action@master
-        with:
-          path: ${{ env.home}}/.bashrc
-          contents: |
-            echo "Hello World!"
-          write-mode: append
-
-
-
-
       - name: Create file
         uses: finnp/create-file-action@master
         env:
