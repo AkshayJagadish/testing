@@ -23,13 +23,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - run: |
-          date > generated.txt
-          git config user.name AkshayJagadish
-          git config user.email akshaysajnani1996@gmail.com
-          git add .
-          git commit -m "generated"
-          git push
+
 
       - name: Run a one-line script
         run: python ./.github/workflows/genpy.py
@@ -57,7 +51,16 @@ jobs:
           
         
 
-
+      - run: |
+          $TIME > commit.txt
+          $GITHUB_SHA > commit.txt
+          $GITHUB_SHA > commit.txt
+          
+          git config user.name AkshayJagadish
+          git config user.email akshaysajnani1996@gmail.com
+          git add .
+          git commit -m "generated"
+          git push
 
 
       - name: Create file
