@@ -36,7 +36,12 @@ jobs:
           TIME: "${{ steps.time.outputs.time }}"
         run: |
           echo $TIME
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
         
+
+
+
 
 
       - name: Write file    
