@@ -47,7 +47,7 @@ jobs:
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
           git add .
-          git commit -m "generated"
+          git commit -m "updated commit.properties file"
           git push
           
         env:
