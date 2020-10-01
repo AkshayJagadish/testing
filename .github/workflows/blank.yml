@@ -35,12 +35,18 @@ jobs:
       - name: Set current date as env variable
         run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%d')"
           
-        
+  
+      - name: Hello world
+        run: echo Hello world $FIRST_NAME $middle_name $Last_Name!
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat        
 
       - run: |
           echo Date:$TIMESTAMP > commit.txt
           echo CommitID:@@$GITHUB_SHA@@ >> commit.txt
-          echo BranchID:@@$GITHUB_REF@@>> commit.txt
+          echo BranchID:$FIRST_NAME>> commit.txt
           
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
