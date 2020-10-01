@@ -49,7 +49,7 @@ jobs:
         
 
       - run: |
-          echo Date:@@${{ steps.time.outputs.time }}@@ > commit.txt
+          echo Date:$TIME > commit.txt
           echo CommitID:@@$GITHUB_SHA@@ >> commit.txt
           echo BranchID:@@$GITHUB_REF@@>> commit.txt
           
