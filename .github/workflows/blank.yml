@@ -41,9 +41,9 @@ jobs:
      
       - name: adding commit file
         run: |
-          echo Date=$TIMESTAMP > .github/workflows/commit.properties
-          echo commitId=$GITHUB_SHA >> .github/workflows/commit.properties
-          echo projectVersion=$MVN_VERSION>> .github/workflows/commit.properties
+          echo Date=$TIMESTAMP > ommit.properties
+          echo commitId=$GITHUB_SHA >> commit.properties
+          echo projectVersion=$MVN_VERSION>> commit.properties
           echo $a
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
