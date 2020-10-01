@@ -41,13 +41,12 @@ jobs:
      
       - name: adding commit file
         run: |
-          echo Date=$TIMESTAMP > ommit.properties
-          echo commitId=$GITHUB_SHA >> commit.properties
-          echo projectVersion=$MVN_VERSION>> commit.properties
+          echo Date=$TIMESTAMP > ./a/commit.properties
+          echo commitId=$GITHUB_SHA >> ./a/commit.properties
+          echo projectVersion=$MVN_VERSION>> ./a/commit.properties
           echo $a
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
-          mkdir ./folder
           git add .
           git commit -m "generated"
           git push
