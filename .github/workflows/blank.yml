@@ -47,6 +47,7 @@ jobs:
           echo $a
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
+          mkdir a
           git add .
           git commit -m "generated"
           git push
