@@ -2,7 +2,7 @@
 
 name: CI
 env:
-  time1: 1
+  time1: $(date +'%Y-%m-%d')
 
 
 
