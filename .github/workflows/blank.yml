@@ -50,6 +50,8 @@ jobs:
           git add .
           git commit -m "updated commit.properties file"
           git push
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          echo $VERSION
           
         env:
           MVN_VERSION: 0.0.1-SNAPSHOT  
