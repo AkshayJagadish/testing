@@ -41,6 +41,7 @@ jobs:
      
       - name: adding commit file
         run: |
+          echo $GITHUB_SHA
           echo Date=$TIMESTAMP > test/commit.properties
           echo commitId=$GITHUB_SHA >> test/commit.properties
           echo projectVersion=$MVN_VERSION>> test/commit.properties
@@ -63,5 +64,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          echo $GITHUB_SHA
           echo Add other actions to build,
           echo test, and deploy your project.
