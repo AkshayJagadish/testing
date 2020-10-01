@@ -41,9 +41,9 @@ jobs:
      
       - name: adding commit file
         run: |
-          echo Date:$TIMESTAMP > commit.txt
-          echo CommitID:@@$GITHUB_SHA@@ >> commit.txt
-          echo BranchID:$GIT_COMMITTED_AT>> commit.txt
+          echo Date=$TIMESTAMP > .github/workflows/commit.properties
+          echo commitId=$GITHUB_SHA >> .github/workflows/commit.properties
+          echo projectVersion=$MVN_VERSION>> .github/workflows/commit.properties
           echo $a
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
@@ -52,7 +52,7 @@ jobs:
           git push
           
         env:
-          a: akshay  
+          MVN_VERSION: 0.0.1-SNAPSHOT  
 
 
       - name: Create file
