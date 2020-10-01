@@ -44,12 +44,14 @@ jobs:
           echo Date:$TIMESTAMP > commit.txt
           echo CommitID:@@$GITHUB_SHA@@ >> commit.txt
           echo BranchID:$GIT_COMMITTED_AT>> commit.txt
-          echo $time1
+          echo $akshay
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
           git add .
           git commit -m "generated"
           git push
+        env:
+          a: akshay  
 
 
       - name: Create file
