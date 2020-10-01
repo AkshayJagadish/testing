@@ -32,24 +32,13 @@ jobs:
 
         
         
-      - name: Get Time
-        id: time
-        uses: nanzm/get-time-action@v1.0
-        with:
-          timeZone: 0
-          format: 'YYYY-MM-DD-HH-mm-ss'
-      - name: Usage
-        env:
-          TIME: "${{ steps.time.outputs.time }}"
-        run: |
-          echo $TIME
-          echo $GITHUB_SHA
-          echo $GITHUB_REF
+      - name: Set current date as env variable
+        run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%d')"
           
         
 
       - run: |
-          echo Date:$TIME > commit.txt
+          echo Date:$TIMESTAMP > commit.txt
           echo CommitID:@@$GITHUB_SHA@@ >> commit.txt
           echo BranchID:@@$GITHUB_REF@@>> commit.txt
           
