@@ -39,8 +39,8 @@ jobs:
           
   
      
-
-      - run: |
+      - name: adding commit file
+        run: |
           echo Date:$TIMESTAMP > commit.txt
           echo CommitID:@@$GITHUB_SHA@@ >> commit.txt
           echo BranchID:$GIT_COMMITTED_AT>> commit.txt
@@ -50,6 +50,7 @@ jobs:
           git add .
           git commit -m "generated"
           git push
+          
         env:
           a: akshay  
 
