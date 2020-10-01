@@ -41,10 +41,9 @@ jobs:
      
       - name: adding commit file
         run: |
-          echo Date=$TIMESTAMP > ./a/commit.properties
-          echo commitId=$GITHUB_SHA >> ./a/commit.properties
-          echo projectVersion=$MVN_VERSION>> ./a/commit.properties
-          echo $a
+          echo Date=$TIMESTAMP > a/commit.properties
+          echo commitId=$GITHUB_SHA >> a/commit.properties
+          echo projectVersion=$MVN_VERSION>> a/commit.properties
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
           git add .
