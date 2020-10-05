@@ -1,4 +1,4 @@
-# This is a basic wocvcvrkflow to help you get started wi th Actions
+# This is a basic wocvcvrkflow to help yosdfu get started wi th Actions
 
 name: CI
 env:
@@ -10,7 +10,7 @@ env:
 # events but only for the master branch
 on: 
   push:
-    branches: [ master ]
+    branches: [ master, AJ ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
