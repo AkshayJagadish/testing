@@ -1,8 +1,7 @@
 # This is a bas    gfic workfjjlow to    help you get started with Actions
 
 name: CI
-env:
-  time1: $(date +'%Y-%m-%d')
+
 
 
 
@@ -12,7 +11,7 @@ on:
   push:
     branches: [ master, AJ ]
 env:
-  a: 1
+  a1: 1
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
      
