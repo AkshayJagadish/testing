@@ -39,7 +39,6 @@ jobs:
      
       - name: adding commit file
         run: |
-        curl -X GET /repos/:owner/:repo/commits
 
           for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | grep origin/master
 
@@ -54,6 +53,7 @@ jobs:
           git push
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
+          echo $GITHUB_WORKSPACE
           
         env:
           MVN_VERSION: 0.0.1-SNAPSHOT  
