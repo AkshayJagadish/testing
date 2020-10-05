@@ -31,8 +31,6 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
         
-
-        
         
       - name: Set current date as env variable
         run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%d')"
@@ -41,6 +39,8 @@ jobs:
      
       - name: adding commit file
         run: |
+          curl -X GET /repos/:owner/:repo/commits
+
           for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | grep origin/master
 
           echo $GITHUB_SHA
