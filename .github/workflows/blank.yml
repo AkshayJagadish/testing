@@ -14,11 +14,18 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
+  run: |
+          echo $GITHUB_SHA
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          TIMESTAMP1=$(date +'%Y-%m-%d')
+          echo $TIMESTAMP1
      
+    
+       
   # This workflow contains a single job called "build"
   build:
-    if: jobs.build.steps.commit == 'true'
+    if: TIMESTAMP1 == 'true'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -75,7 +82,7 @@ jobs:
           echo $GITHUB_SHA
           echo Add other actions to build,
           echo test, and deploy your project.
-          TIMESTAMP1=$(date +'%Y-%m-%d')
+          TIMESTAMP1=true
           echo $TIMESTAMP1
           echo "::set-output name=flag::true"
           
