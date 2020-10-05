@@ -31,7 +31,7 @@ jobs:
         run: |
           TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
           echo $TimePassed
-          if [[ "$TimePassed" == *"hours"* ]] || [[ "$TimePassed" == *"minutes"* ]] || [["$TimePassed" == *"seconds"*]]
+          if [[ "$TimePassed" == *"minutes"* ]] || [["$TimePassed" == *"seconds"*]]
            then
             echo "It's there."
           fi
