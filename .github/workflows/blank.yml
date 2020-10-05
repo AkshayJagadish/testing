@@ -41,6 +41,8 @@ jobs:
      
       - name: adding commit file
         run: |
+          for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r
+
           echo $GITHUB_SHA
           echo Date=$TIMESTAMP > test/commit.properties
           echo commitId=$GITHUB_SHA >> test/commit.properties
