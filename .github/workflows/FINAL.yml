@@ -56,6 +56,6 @@ jobs:
           fi
       
       - name: Execute if time passed
-        if: steps.check.outputs.key == true
+        if: steps.check.outputs.key == 'true'
         run: |
           echo hi           
