@@ -53,6 +53,6 @@ jobs:
           echo ::set-output name=key::$buildRequired
       
       - name: Execute if time passed
-        if: steps.check.outputs.key == true
+        if: steps.check.outputs.key == 'true'
         run: |
           echo hi           
