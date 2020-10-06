@@ -1,4 +1,5 @@
 
+
 # This is a basic workflow to help you get started with Actions
 
 name: final
@@ -37,25 +38,21 @@ jobs:
           if [[ $TimePassed == *"seconds"* ]]; then
           echo "It's there!"
           fi
-
           git show --format="%ar" $branch | head -n 1
           
-
       - name: Checking if the last commit was more than 24 hrs
         id: check
         run: |
           TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
           echo $TimePassed
-          if [[ $TimePassed == *"hours"* ]] || [[ "$TimePassed" == *"minutes"* ]] || [["$TimePassed" == *"seconds"*]]; then
-          echo "Last commit was less than 24 hours"
+          if [[ $TimePassed == *"seconds"* ]]; then
+          echo "It's there!"
           buildRequired=true
-          echo $buildRequired
-
+          fi
           git show --format="%ar" $branch | head -n 1
           echo ::set-output name=key::$buildRequired
-          fi
       
-      - name: Execute build if the last commit was more than 24 hrs
-        if: steps.check.outputs.key == 'true'
+      - name: Execute if time passed
+        if: steps.check.outputs.key == true
         run: |
-          echo hi    
+          echo hi           
