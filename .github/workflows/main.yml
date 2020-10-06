@@ -18,4 +18,6 @@ jobs:
     - id: id
       run: echo ::set-output name=key::value
     - if: steps.id.outputs.key == 'value'
+  run: |
+        echo hi
 
