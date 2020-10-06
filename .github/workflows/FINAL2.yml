@@ -1,0 +1,45 @@
+
+
+# This is a basic workflow to help you get started with Actions
+
+name: final2
+env:
+  a: 1
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Nightlybuild:
+    #if: github.event_name == 'schedule' 
+    #if: steps.check.outputs.key == 'true'
+    # The type of runner that the job will run on
+    if: a == 1  
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+          
+      - name: Checking if the last commit was more than 24 hrs
+        id: check
+        run: |
+          TimePassed=$(echo -e `git show --format="%ar" $branch | head -n 1`)
+          echo $TimePassed
+          if [[ $TimePassed == *"hour"* ]] || [[ "$TimePassed" == *"minute"* ]] || [[ $TimePassed == *"second"* ]]; then
+          echo "Last commit was less than 24 hours"
+          buildRequired=true
+          fi
+          echo ::set-output name=key::$buildRequired
+      
+      - name: Execute if the last commit was more than 24 hrs
+        if: steps.check.outputs.key == 'true'
+        run: |
+          echo hi           
