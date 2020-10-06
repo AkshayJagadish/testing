@@ -54,6 +54,6 @@ jobs:
           echo ::set-output name=key::$TimePassed
       
       - name: Execute if time passed
-        if: steps.check.outputs.key == '1'
+        if: steps.check.outputs.key == *"seconds"*
         run: |
           echo hi           
