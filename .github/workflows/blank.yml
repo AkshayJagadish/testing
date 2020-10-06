@@ -45,7 +45,8 @@ jobs:
       - name: adding commit file
         run: |
 
-          for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | grep origin/master
+          TIMESTAMP=$(date +'%Y-%m-%d')
+          foaar branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | grep origin/master
           TIMESTAMP=$(date +'%Y-%m-%d')
           echo $GITHUB_SHA
           echo $TIMESTAMP
