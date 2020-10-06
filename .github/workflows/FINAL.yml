@@ -29,8 +29,7 @@ jobs:
       - name: Checking if the last commit was more than 24 hrs
         id: check
         run: |
-          TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
-          TimePassed="1 hour ago"
+          TimePassed=$(echo -e `git show --format="%ar" $branch | head -n 1`)
           echo $TimePassed
           if [[ $TimePassed == *"hour"* ]] || [[ "$TimePassed" == *"minute"* ]] || [[ $TimePassed == *"second"* ]]; then
           echo "Last commit was less than 24 hours"
