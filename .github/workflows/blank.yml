@@ -20,7 +20,7 @@ jobs:
        
   # This workflow contains a single job called "build"
   build:
-    if: steps.commit.outputs.flag
+    if: steps.commit.outputs.flag == 'll'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -42,7 +42,7 @@ jobs:
   
       - name: Set flag
         id: times
-        run: echo "::set-env name=flag::true"
+        run: echo ::set-output name=flag::ll
         
       - name: adding commit file
         run: |
@@ -61,7 +61,6 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
           ls $GITHUB_WORKSPACE
-          echo "::set-output name=always::something"
           
         env:
           MVN_VERSION: 0.0.1-SNAPSHOT  
@@ -83,7 +82,7 @@ jobs:
           echo test, and deploy your project.
           TIMESTAMP1=true
           echo $TIMESTAMP1
-          echo "::set-output name=flag::true"
+          run: echo ::set-output name=flag::ll
           
           
     
