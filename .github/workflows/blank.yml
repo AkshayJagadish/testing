@@ -55,9 +55,7 @@ jobs:
           echo projectVersion=$MVN_VERSION>> test/commit.properties
           git config user.name AkshayJagadish
           git config user.email akshaysajnani1996@gmail.com
-          git add .
-          git commit -m "updated commit.properties file"
-          git push
+          cp test/commit.properties .
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
           ls $GITHUB_WORKSPACE
