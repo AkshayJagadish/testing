@@ -19,10 +19,17 @@ jobs:
     - name: Checking if the last commit was more than 24 hrs
       id: check
       run: |
-        value=2
-        echo ::set-output name=key::$value
+          TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
+          echo $TimePassed
+          if [[ "$TimePassed" == *"minutes"* ]] || [["$TimePassed" == *"seconds"*]]
+           then
+            echo "It's there."
+          fi
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          git show --format="%ar" $branch | head -n 1
       
-    - name: b
-      if: steps.check.outputs.key == '2'
+    - name: Execute if the last commit was not more than 24hrs
+      if: steps.check.outputs.key == 'hours' || 'minutes' || 'seconds'
       run: |
         echo hi
