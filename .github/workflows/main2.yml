@@ -13,15 +13,16 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   job1:
-    if: steps.id.outputs.key == 'value'
     runs-on: ubuntu-latest
     steps:
     - name: a
       id: id
-      run: echo ::set-output name=key::value
+      run: |
+        value=1
+        echo ::set-output name=key::$value
       
     - name: b
-      if: steps.id.outputs.key == 'value'
+      if: steps.id.outputs.key == '1'
       run: |
         echo hi
 
