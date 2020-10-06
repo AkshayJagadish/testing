@@ -49,7 +49,7 @@ jobs:
           if [[ $TimePassed == *"seconds"* ]]; then
           echo "It's there!"
           buildRequired=true
-          
+          echo $buildRequired
 
           git show --format="%ar" $branch | head -n 1
           echo ::set-output name=key::$buildRequired
