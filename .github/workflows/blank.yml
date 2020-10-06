@@ -35,8 +35,7 @@ jobs:
         run: echo Hello, world!
         
         
-      - name: Set current date as env variable
-        run: echo "::set-env name=TIMESTAMP::$(date +'%Y-%m-%d')"
+
           
   
       - name: Set flag
@@ -47,7 +46,7 @@ jobs:
         run: |
 
           for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r | grep origin/master
-
+          TIMESTAMP=$(date +'%Y-%m-%d')
           echo $GITHUB_SHA
           echo Date=$TIMESTAMP > test/commit.properties
           echo commitId=$GITHUB_SHA >> test/commit.properties
