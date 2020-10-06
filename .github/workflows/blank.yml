@@ -52,9 +52,7 @@ jobs:
           echo Date=$TIMESTAMP > test/commit.properties
           echo commitId=$GITHUB_SHA >> test/commit.properties
           echo projectVersion=$MVN_VERSION>> test/commit.properties
-          git config user.name AkshayJagadish
-          git config user.email akshaysajnani1996@gmail.com
-          cp test/commit.properties .
+          cp test/commit.properties commit2.properties
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           echo $VERSION
           ls $GITHUB_WORKSPACE
