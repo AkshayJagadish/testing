@@ -20,7 +20,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Checking if the last commit was more than 24 hrs
-      id: check
       run: |
           TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
           echo $TimePassed
