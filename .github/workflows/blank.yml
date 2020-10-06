@@ -79,7 +79,7 @@ jobs:
           echo test, and deploy your project.
           TIMESTAMP1=true
           echo $TIMESTAMP1
-          run: echo ::set-output name=flag::ll
+          ls
           
           
     
