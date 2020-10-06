@@ -44,9 +44,9 @@ jobs:
         id: check
         run: |
           TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
-          TimePassed=days
+          TimePassed=1 hour ago
           echo $TimePassed
-          if [[ $TimePassed == *"hours"* ]] || [[ "$TimePassed" == *"minutes"* ]] || [[ $TimePassed == *"seconds"* ]]; then
+          if [[ $TimePassed == *"hour"* ]] || [[ "$TimePassed" == *"minute"* ]] || [[ $TimePassed == *"second"* ]]; then
           echo "It's there!"
           buildRequired=true
           fi
