@@ -25,20 +25,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-
-
-        
-
-      # Runs a set of commands using the runners shell
-      - name: Get Time passed since last commit
-        run: |
-          TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
-          echo $TimePassed
-          if [[ $TimePassed == *"seconds"* ]]; then
-          echo "It's there!"
-          fi
-          git show --format="%ar" $branch | head -n 1
           
       - name: Checking if the last commit was more than 24 hrs
         id: check
@@ -47,13 +33,13 @@ jobs:
           TimePassed="1 hour ago"
           echo $TimePassed
           if [[ $TimePassed == *"hour"* ]] || [[ "$TimePassed" == *"minute"* ]] || [[ $TimePassed == *"second"* ]]; then
-          echo "It's there!"
+          echo "Last commit was less than 24 hours"
           buildRequired=true
           fi
           git show --format="%ar" $branch | head -n 1
           echo ::set-output name=key::$buildRequired
       
-      - name: Execute if time passed
+      - name: Execute if the last commit was more than 24 hrs
         if: steps.check.outputs.key == 'true'
         run: |
           echo hi           
