@@ -15,9 +15,12 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-    - id: id
+    - name: a
+      id: id
       run: echo ::set-output name=key::value
-    - if: steps.id.outputs.key == 'value'
-  run: |
+      
+    - name: b
+      if: steps.id.outputs.key == 'value'
+      run: |
         echo hi
 
