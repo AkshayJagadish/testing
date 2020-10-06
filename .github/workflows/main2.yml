@@ -18,7 +18,7 @@ jobs:
     - name: a
       id: id
       run: |
-        value=1
+        value=2
         echo ::set-output name=key::$value
       
     - name: b
