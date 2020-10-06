@@ -21,6 +21,7 @@ jobs:
     steps:
     - id: step1
       run: echo "::set-output name=test::hello"
+      if: steps.step1.output.test == 'hello' 
 
   job2:
     runs-on: ubuntu-latest
