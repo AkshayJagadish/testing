@@ -50,6 +50,7 @@ jobs:
         run: |          
           TIMESTAMP=$(date +'%Y-%m-%d')
           echo $TIMESTAMP
+          mvn help:evaluate -Dexpression=project.version | grep -e '^[^\[]'
           MVN_VERSION=$(mvn help:evaluate -Dexpression=project.version | grep -e '^[^\[]')
           echo $MVN_VERSION
           
