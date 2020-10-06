@@ -50,8 +50,9 @@ jobs:
         run: |          
           TIMESTAMP=$(date +'%Y-%m-%d')
           echo $TIMESTAMP
-          mvn --file test/pom.xml help:evaluate -Dexpression=project.version | grep -e '^[^\[]'
-          MVN_VERSION=$(mvn --file test/pom.xml help:evaluate -Dexpression=project.version | grep -e '^[^\[]')
+          mvn --file test/pom.xml mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout
+
+          MVN_VERSION=$(mvn --file test/pom.xml mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $MVN_VERSION
           
           
