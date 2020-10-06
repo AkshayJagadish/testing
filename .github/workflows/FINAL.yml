@@ -12,15 +12,27 @@ on:
     branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  job1:
+  # This workflow contains a single job called "build"
+  build:
+    if: github.event_name == 'schedule'
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - name: Checking if the last commit was more than 24 hrs
-      run: |
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
           TimePassed=$(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ar" $branch | head -n 1` \\t$branch; done | sort -r)
           echo $TimePassed
           if [[ "$TimePassed" == *"minutes"* ]] || [["$TimePassed" == *"seconds"*]]
@@ -30,8 +42,3 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           git show --format="%ar" $branch | head -n 1
-      
-    - name: Execute if the last commit was not more than 24hrs
-      if: steps.check.outputs.key == 'hours' || 'minutes' || 'seconds'
-      run: |
-        echo hi
