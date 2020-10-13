@@ -8,7 +8,7 @@ name: final2final
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master , testing3]
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '*/10 * * * *'    
